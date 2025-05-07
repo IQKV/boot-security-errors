@@ -1,4 +1,4 @@
-# RESTful Libraries
+# ✨ RESTful Libraries
 
 ## Versioning
 
