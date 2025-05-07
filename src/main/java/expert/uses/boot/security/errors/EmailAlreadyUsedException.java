@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 IQKV Team, and the original author or authors from the JHipster project.
+ * Copyright 2025 Expertness Team, and the original author or authors from the JHipster project.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,29 +14,17 @@
  * limitations under the License.
  */
 
-package com.iqkv.boot.security.errors;
+package expert.uses.boot.security.errors;
 
 import java.io.Serial;
 
-import com.iqkv.boot.security.errors.ProblemDetailWithCause.ProblemDetailWithCauseBuilder;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.ErrorResponseException;
-
 @SuppressWarnings("java:S110") // Inheritance tree of classes should not be too deep
-public class InvalidPasswordException extends ErrorResponseException {
+public class EmailAlreadyUsedException extends BadRequestAlertException {
 
   @Serial
   private static final long serialVersionUID = 1L;
 
-  public InvalidPasswordException() {
-    super(
-        HttpStatus.BAD_REQUEST,
-        ProblemDetailWithCauseBuilder.instance()
-            .withStatus(HttpStatus.BAD_REQUEST.value())
-            .withType(SecurityErrorConstants.INVALID_PASSWORD_TYPE)
-            .withTitle("Incorrect password")
-            .build(),
-        null
-    );
+  public EmailAlreadyUsedException() {
+    super(SecurityErrorConstants.EMAIL_ALREADY_USED_TYPE, "Email is already in use!", "userManagement", "emailexists");
   }
 }

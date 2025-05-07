@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 IQKV Team, and the original author or authors from the JHipster project.
+ * Copyright 2025 Expertness Team, and the original author or authors from the JHipster project.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
-package com.iqkv.boot.security.errors;
+package expert.uses.boot.security.errors;
 
 import java.io.Serial;
 import java.net.URI;
 
-import com.iqkv.boot.security.errors.ProblemDetailWithCause.ProblemDetailWithCauseBuilder;
+import expert.uses.boot.http.ProblemDetailWithCause;
+import expert.uses.boot.http.ProblemDetailWithCause.ProblemDetailWithCauseBuilder;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.ErrorResponseException;
 

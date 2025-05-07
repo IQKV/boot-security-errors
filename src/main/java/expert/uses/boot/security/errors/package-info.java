@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 IQKV Team, and the original author or authors from the JHipster project.
+ * Copyright 2025 Expertness Team, and the original author or authors from the JHipster project.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,8 @@
  * limitations under the License.
  */
 
-package com.iqkv.boot.security.errors;
+/**
+ * Rest layer error handling.
+ */
 
-import java.io.Serial;
-
-@SuppressWarnings("java:S110") // Inheritance tree of classes should not be too deep
-public class LoginAlreadyUsedException extends BadRequestAlertException {
-
-  @Serial
-  private static final long serialVersionUID = 1L;
-
-  public LoginAlreadyUsedException() {
-    super(SecurityErrorConstants.LOGIN_ALREADY_USED_TYPE, "Login name already used!", "userManagement", "userexists");
-  }
-}
+package expert.uses.boot.security.errors;
