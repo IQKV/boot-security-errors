@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 
-package expert.uses.boot.security.errors;
+package com.iqkv.boot.security.errors;
 
-import java.io.Serial;
+import java.net.URI;
 
-@SuppressWarnings("java:S110") // Inheritance tree of classes should not be too deep
-public class LoginAlreadyUsedException extends BadRequestAlertException {
+public final class SecurityErrorConstants {
 
-  @Serial
-  private static final long serialVersionUID = 1L;
+  public static final String PROBLEM_BASE_URL = "https://www.gazu.net/problem";
+  public static final URI DEFAULT_TYPE = URI.create(PROBLEM_BASE_URL + "/problem-with-message");
+  public static final URI INVALID_PASSWORD_TYPE = URI.create(PROBLEM_BASE_URL + "/invalid-password");
+  public static final URI EMAIL_ALREADY_USED_TYPE = URI.create(PROBLEM_BASE_URL + "/email-already-used");
+  public static final URI LOGIN_ALREADY_USED_TYPE = URI.create(PROBLEM_BASE_URL + "/login-already-used");
 
-  public LoginAlreadyUsedException() {
-    super(SecurityErrorConstants.LOGIN_ALREADY_USED_TYPE, "Login name already used!", "userManagement", "userexists");
+  private SecurityErrorConstants() {
   }
 }
