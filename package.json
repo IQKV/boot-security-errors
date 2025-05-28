@@ -1,5 +1,5 @@
 {
-  "name": "@expertness/boot-security-errors",
+  "name": "@iqkv/boot-security-errors",
   "version": "25.0.0",
   "description": "Provide an optional Git commit hooks.",
   "private": true,

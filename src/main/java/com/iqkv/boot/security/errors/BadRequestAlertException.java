@@ -14,30 +14,55 @@
  * limitations under the License.
  */
 
-package expert.uses.boot.security.errors;
+package com.iqkv.boot.security.errors;
 
 import java.io.Serial;
+import java.net.URI;
 
-import expert.uses.boot.http.ProblemDetailWithCause.ProblemDetailWithCauseBuilder;
-
+import com.iqkv.boot.http.ProblemDetailWithCause;
+import com.iqkv.boot.http.ProblemDetailWithCause.ProblemDetailWithCauseBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.ErrorResponseException;
 
 @SuppressWarnings("java:S110") // Inheritance tree of classes should not be too deep
-public class InvalidPasswordException extends ErrorResponseException {
+public class BadRequestAlertException extends ErrorResponseException {
 
   @Serial
   private static final long serialVersionUID = 1L;
 
-  public InvalidPasswordException() {
+  private final String entityName;
+
+  private final String errorKey;
+
+  public BadRequestAlertException(String defaultMessage, String entityName, String errorKey) {
+    this(SecurityErrorConstants.DEFAULT_TYPE, defaultMessage, entityName, errorKey);
+  }
+
+  public BadRequestAlertException(URI type, String defaultMessage, String entityName, String errorKey) {
     super(
         HttpStatus.BAD_REQUEST,
         ProblemDetailWithCauseBuilder.instance()
             .withStatus(HttpStatus.BAD_REQUEST.value())
-            .withType(SecurityErrorConstants.INVALID_PASSWORD_TYPE)
-            .withTitle("Incorrect password")
+            .withType(type)
+            .withTitle(defaultMessage)
+            .withProperty("message", "error." + errorKey)
+            .withProperty("params", entityName)
             .build(),
         null
     );
+    this.entityName = entityName;
+    this.errorKey = errorKey;
+  }
+
+  public String getEntityName() {
+    return entityName;
+  }
+
+  public String getErrorKey() {
+    return errorKey;
+  }
+
+  public ProblemDetailWithCause getProblemDetailWithCause() {
+    return (ProblemDetailWithCause) this.getBody();
   }
 }
